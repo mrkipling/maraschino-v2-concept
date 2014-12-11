@@ -1,0 +1,13 @@
+{
+  "name": "skeleton",
+  "homepage": "https://github.com/dhgamache/Skeleton",
+  "_release": "v2.0",
+  "_resolution": {
+    "type": "tag",
+    "tag": "v2.0",
+    "commit": "7ab682091d1032035cfcb668e6bd4b465bfa4679"
+  },
+  "_source": "git://github.com/dhgamache/Skeleton.git",
+  "_target": "v2.0",
+  "_originalSource": "skeleton"
+}
