@@ -12,7 +12,8 @@ var gulp = require('gulp'),
 
 var paths = {
     styles: {
-        lib: ['./assets/css/lib/*'],
+        lib: ['./assets/css/lib/base.css',
+              './assets/css/lib/skeleton.css'],
         site: ['./assets/css/site/site.less']
     },
     scripts: {
@@ -70,7 +71,7 @@ gulp.task('scripts_site', function() {
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(concat('site.js'))
-        .pipe(uglify())
+        //.pipe(uglify())
         .pipe(gulp.dest('./static/js'));
 });
 
