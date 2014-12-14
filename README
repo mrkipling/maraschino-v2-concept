@@ -16,14 +16,14 @@ Anatomy of a module:
                    be '/static', otherwise auto-loading the module's assets will
                    not work.
 
-        /static/: Directory containing static files (JS, CSS, images) - files in
-                  this directory are ignored apart from what is served in /c/
-                  (see below). If you have a complex module you could create
-                  multiple JS and CSS files here and create a gulpfile to
-                  compile them and output to /c/.
+        /static/: Directory containing static files (JS, CSS, images).
+
+                  /js/: Source JS files. Will be compiled automatically when
+                        running gulp. Make sure that you compile assets before
+                        distributing a module.
 
                   /c/: Compiled assets'; must contain both:
 
-                       module.js: The module's JS file
+                       module.js: The module's JS file.
 
-                       module.css: The module's CSS file
+                       module.css: The module's CSS file.

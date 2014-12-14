@@ -4,10 +4,13 @@
  * @fileOverview Render the page.
  */
 
-// Defined in base.js.
-Maraschino.init();
+$(document).ready(function() {
+    // defined in base.js
+    Maraschino.init();
 
-React.render(
-    <Maraschino.Container.Base />,
-    document.getElementById('container')
-);
+    // render the main React element
+    React.render(
+        <Maraschino.Container.Base />,
+        document.getElementById('container')
+    );
+});
