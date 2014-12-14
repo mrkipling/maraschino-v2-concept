@@ -18,9 +18,9 @@ var paths = {
     },
     scripts: {
         lib: ['./assets/js/lib/react-with-addons.min.js'],
-        site: ['./assets/js/site/*']
+        site: ['./assets/js/site/**']
     },
-    images: ['./assets/images/*']
+    images: ['./assets/images/**']
 };
 
 
