@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     less = require('gulp-less'),
     minifycss = require('gulp-minify-css'),
+    react = require('gulp-react'),
     rimraf = require('gulp-rimraf'),
     uglify = require('gulp-uglify'),
     watch = require('gulp-watch');
@@ -18,7 +19,11 @@ var paths = {
     },
     scripts: {
         lib: ['./assets/js/lib/react-with-addons.min.js'],
-        site: ['./assets/js/site/**']
+        site: ['./assets/js/site/base.js',
+               './assets/js/site/tools.js',
+               './assets/js/site/container.js',
+               './assets/js/site/modules/*.js',
+               './assets/js/site/render.js']
     },
     images: ['./assets/images/**']
 };
@@ -62,6 +67,7 @@ gulp.task('scripts_lib', function() {
 
 gulp.task('scripts_site', function() {
     return gulp.src(paths.scripts.site)
+        .pipe(react())
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(concat('site.js'))

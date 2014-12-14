@@ -10,7 +10,12 @@ app = Flask(__name__)
 load_blueprints(app, 'modules')
 
 settings = {
-    'num_columns': 3
+    'columns': [
+        [],
+        [],
+        ['recent'],
+    ],
+    'num_columns': 3,
 }
 
 @app.route('/')
