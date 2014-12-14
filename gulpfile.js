@@ -17,9 +17,7 @@ var paths = {
         site: ['./assets/css/site/site.less']
     },
     scripts: {
-        lib: ['./assets/js/lib/jquery.js',
-              './assets/js/lib/bootstrap.js'],
-        modernizr: ['./assets/js/lib/modernizr.js'],
+        lib: ['./assets/js/lib/react-with-addons.min.js'],
         site: ['./assets/js/site/*']
     },
     images: ['./assets/images/*']
@@ -60,11 +58,6 @@ gulp.task('scripts_lib', function() {
         .pipe(gulp.dest('./static/js'));
 });
 
-gulp.task('scripts_modernizr', function() {
-    return gulp.src(paths.scripts.modernizr)
-        //.pipe(uglify())
-        .pipe(gulp.dest('./static/js'));
-});
 
 gulp.task('scripts_site', function() {
     return gulp.src(paths.scripts.site)
@@ -140,7 +133,6 @@ gulp.task('default', ['clean'], function() {
     gulp.start('styles_lib',
                'styles_site',
                'scripts_lib',
-               'scripts_modernizr',
                'scripts_site',
                'images');
 });
