@@ -37,7 +37,7 @@ _log = function (message, type) {
  */
 
 Maraschino.Tools.getSetting = function(setting, type) {
-    var val = document.querySelectorAll('meta[name=' + setting + ']')[0].getAttribute('content');
+    var val = $('meta[name=' + setting + ']').get(0).getAttribute('content');
 
     switch (type) {
         case 'json':

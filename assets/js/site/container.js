@@ -17,7 +17,7 @@ Maraschino.Container.Base = React.createClass({
 
     componentDidMount: function() {
         // set the number of columns in the grid, for the benefit of the CSS
-        document.getElementById('container').classList.add('columns-' + this.state.columns.length);
+        $('#container').addClass('columns-' + this.state.columns.length);
     },
 
     render: function() {
@@ -56,6 +56,7 @@ Maraschino.Container.Column = React.createClass({
 Maraschino.Container.Module = React.createClass({
     getInitialState: function () {
         var url = '/module/' + this.props.name + '/';
+        return {};
     },
 
     render: function() {
