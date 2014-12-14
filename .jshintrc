@@ -77,6 +77,7 @@
     // Custom Globals
     "globals"       : {
         "React": true,
-        "Maraschino": true
+        "Maraschino": true,
+        "_log": true
     }        // additional predefined global variables
 }
