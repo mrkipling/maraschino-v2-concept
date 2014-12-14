@@ -1,3 +1,5 @@
+/** @jsx React.DOM */
+
 /**
  * Module: RecentEpisodes
  * Recently added episodes.
@@ -34,7 +36,7 @@ Maraschino.Modules.RecentEpisodes = React.createClass({
     }
 });
 
-Maraschino.Modules.Recent = React.createClass({displayName: 'Recent',
+Maraschino.Modules.Recent = React.createClass({
     render: function () {
         return (
             <div className="inner" />
