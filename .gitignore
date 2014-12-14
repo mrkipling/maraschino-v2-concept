@@ -1,3 +1,4 @@
 *.pyc
 node_modules/
-static/
+/static/
+/maraschino/modules/*/static/c/
