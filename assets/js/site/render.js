@@ -7,7 +7,7 @@
 // Defined in base.js.
 Maraschino.init();
 
-React.renderComponent(
+React.render(
     <Maraschino.Container.Base />,
     document.getElementById('container')
 );

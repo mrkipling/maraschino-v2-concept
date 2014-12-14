@@ -21,9 +21,9 @@ Maraschino.Container.Base = React.createClass({
     },
 
     render: function() {
-        var columns = this.state.columns.map(function(column) {
+        var columns = this.state.columns.map(function(column, index) {
             return (
-                <Maraschino.Container.Column module_names={column} />
+                <Maraschino.Container.Column key={'column-' + index} module_names={column} />
             );
         });
 
@@ -41,7 +41,7 @@ Maraschino.Container.Column = React.createClass({
             <span>&nbsp;</span>
         ) : this.props.module_names.map(function(module_name) {
             return (
-                <Maraschino.Container.Module name={module_name} />
+                <Maraschino.Container.Module key={'module-' + module_name} name={module_name} />
             );
         });
 
