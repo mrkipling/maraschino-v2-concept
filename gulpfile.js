@@ -18,7 +18,7 @@ var paths = {
                './assets/css/site/base.less']
     },
     scripts: {
-        lib: ['./assets/js/lib/react-with-addons.min.js'],
+        lib: ['./assets/js/lib/react-with-addons.js'],
         site: ['./assets/js/site/base.js',
                './assets/js/site/tools.js',
                './assets/js/site/container.js',

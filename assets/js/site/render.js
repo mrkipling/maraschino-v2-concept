@@ -8,6 +8,6 @@
 Maraschino.init();
 
 React.renderComponent(
-    <Maraschino.Container />,
+    <Maraschino.Container.Base />,
     document.getElementById('container')
 );
