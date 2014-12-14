@@ -16,7 +16,7 @@
         {# module CSS #}
 
         {% for module in modules %}
-            <link href="/static/modules/{{ module }}/module.css" rel="stylesheet">
+            <link href="/module/{{ module }}/static/module.css" rel="stylesheet">
         {% endfor %}
 
         {# settings #}
@@ -39,7 +39,7 @@
         {# module JS #}
 
         {% for module in modules %}
-            <script src="/static/modules/{{ module }}/module.js"></script>
+            <script src="/module/{{ module }}/static/module.js"></script>
         {% endfor %}
 
     </body>

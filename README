@@ -13,8 +13,8 @@ Anatomy of a module:
 
         module.py: File name can be whatever you like; must provide a Blueprint.
                    static_folder should be 'static/c' and static_url_path MUST
-                   be '/static/modules/<blueprint_name>', otherwise
-                   auto-importing the module's assets will not work.
+                   be '/static', otherwise auto-loading the module's assets will
+                   not work.
 
         /static/: Directory containing static files (JS, CSS, images) - files in
                   this directory are ignored apart from what is served in /c/

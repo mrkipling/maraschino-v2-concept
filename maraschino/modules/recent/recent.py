@@ -2,7 +2,7 @@ from flask import Blueprint
 
 module = Blueprint('recent', __name__,
                    static_folder='static/c',
-                   static_url_path='/static/modules/recent')
+                   static_url_path='/static')
 
 @module.route('/recent')
 def recent():

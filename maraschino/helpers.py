@@ -28,10 +28,14 @@ def load_blueprints(app, path):
         if os.path.isdir(os.path.join(path, fname)) and os.path.exists(os.path.join(path, fname, '__init__.py')):
             f, filename, descr = imp.find_module(fname, [path])
             mods[fname] = imp.load_module(fname, f, filename, descr)
-            app.register_blueprint(getattr(mods[fname], 'module'))
+            app.register_blueprint(getattr(mods[fname], 'module'),
+                                   url_prefix='/module/' + getattr(mods[fname], 'module').name)
+
         elif os.path.isfile(os.path.join(path, fname)):
             name, ext = os.path.splitext(fname)
             if ext == '.py' and not name == '__init__':
                 f, filename, descr = imp.find_module(name, [path])
                 mods[fname] = imp.load_module(name, f, filename, descr)
-                app.register_blueprint(getattr(mods[fname], 'module'))
+
+                app.register_blueprint(getattr(mods[fname], 'module'),
+                                       url_prefix='/module/' + getattr(mods[fname], 'module').name)
