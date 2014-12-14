@@ -11,7 +11,8 @@ load_blueprints(app, 'modules')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html',
+                           modules = app.blueprints.keys())
 
 if __name__ == "__main__":
     app.run()

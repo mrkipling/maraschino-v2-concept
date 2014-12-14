@@ -5,14 +5,24 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
-        <link href="/static/css/lib.css" rel="stylesheet"></link>
-        <link href="/static/css/site.css" rel="stylesheet"></link>
-        <script src="/static/js/modernizr.js"></script>
+        <link href="/static/css/lib.css" rel="stylesheet">
+        <link href="/static/css/site.css" rel="stylesheet">
+
+        {# module CSS #}
+        {% for module in modules %}
+            <link href="/static/modules/{{ module }}/module.css" rel="stylesheet">
+        {% endfor %}
+
     </head>
     <body>
 
         <script src="/static/js/lib.js"></script>
         <script src="/static/js/site.js"></script>
+
+        {# module JS #}
+        {% for module in modules %}
+            <script src="/static/modules/{{ module }}/module.js"></script>
+        {% endfor %}
 
     </body>
 </html>
