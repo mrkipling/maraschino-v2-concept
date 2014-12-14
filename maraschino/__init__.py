@@ -13,7 +13,7 @@ settings = {
     'columns': [
         [],
         [],
-        ['recent'],
+        ['RecentEpisodes'],
     ],
     'num_columns': 3,
 }

@@ -40,30 +40,14 @@ Maraschino.Container.Column = React.createClass({
         var modules = this.props.module_names.length === 0 ? (
             <span>&nbsp;</span>
         ) : this.props.module_names.map(function(module_name) {
-            return (
-                <Maraschino.Container.Module key={'module-' + module_name} name={module_name} />
-            );
+            return Maraschino.Modules[module_name]({
+                key: 'module-' + module_name
+            });
         });
 
         return (
             <div className="column">
                 {modules}
-            </div>
-        );
-    }
-});
-
-Maraschino.Container.Module = React.createClass({
-    getInitialState: function () {
-        var url = '/module/' + this.props.name + '/';
-        return {};
-    },
-
-    render: function() {
-        var module = this.props.name;
-        return (
-            <div className="module">
-                <p>Module: {module}</p>
             </div>
         );
     }
