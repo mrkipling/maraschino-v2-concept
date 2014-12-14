@@ -12,9 +12,9 @@ var gulp = require('gulp'),
 
 var paths = {
     styles: {
-        lib: ['./assets/css/lib/base.css',
-              './assets/css/lib/skeleton.css'],
-        site: ['./assets/css/site/site.less']
+        lib: [],
+        site: ['./assets/css/site/reset.less',
+               './assets/css/site/base.less']
     },
     scripts: {
         lib: ['./assets/js/lib/react-with-addons.min.js'],
@@ -42,6 +42,7 @@ gulp.task('styles_site', function() {
         .on('error', handleError)
         .pipe(autoprefixer())
         .pipe(minifycss())
+        .pipe(concat('site.css'))
         .pipe(gulp.dest('./static/css'));
 });
 

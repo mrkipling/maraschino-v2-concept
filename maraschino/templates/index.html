@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title></title>
+
+        <title>Maraschino</title>
+
+        {# CSS #}
+
         <link href="/static/css/lib.css" rel="stylesheet">
         <link href="/static/css/site.css" rel="stylesheet">
 
         {# module CSS #}
+
         {% for module in modules %}
             <link href="/static/modules/{{ module }}/module.css" rel="stylesheet">
         {% endfor %}
 
+        {# settings #}
+
+        <meta name="num_columns" content="{{ settings.num_columns }}">
+
     </head>
     <body>
+
+        {# container element that React binds to #}
+
+        <div id="container" class="container cols-{{ settings.num_columns }}"></div>
+
+        {# CSS #}
 
         <script src="/static/js/lib.js"></script>
         <script src="/static/js/site.js"></script>
 
         {# module JS #}
+
         {% for module in modules %}
             <script src="/static/modules/{{ module }}/module.js"></script>
         {% endfor %}

@@ -9,10 +9,15 @@ app = Flask(__name__)
 
 load_blueprints(app, 'modules')
 
+settings = {
+    'num_columns': 3
+}
+
 @app.route('/')
 def index():
     return render_template('index.html',
-                           modules = app.blueprints.keys())
+                           modules = app.blueprints.keys(),
+                           settings = settings)
 
 if __name__ == "__main__":
     app.run()

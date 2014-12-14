@@ -1,0 +1,64 @@
+body {
+    background: #333 url('/static/images/backgrounds/grass.jpg') no-repeat center center fixed;
+    color: #eee;
+    font-family: Arial, Helvetica, Sans-serif;
+    font-size: 1em;
+    line-height: 1.3em;
+    overflow-x: hidden;
+    background-size: cover;
+    padding: 2%;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+}
+
+
+
+
+
+/*--- column widths ---*/
+
+.cols-3 .col {
+    float: left;
+    margin-left: 2%;
+    width: 32%;
+
+    &:first-child {
+        margin-left: 0;
+    }
+}
+
+.cols-4 .col {
+    float: left;
+    margin-left: 2%;
+    width: 23.5%;
+
+    &:first-child {
+        margin-left: 0;
+    }
+}
+
+
+
+
+
+/*--- clearfix ---*/
+
+.clearfix,
+.listfix li {
+    min-height: 0;
+}
+
+.clearfix:after,
+.listfix li:after {
+    content: ".";
+    height: 0;
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+
+* html .clearfix,
+* html .listfix li {
+    height: 1%;
+}
