@@ -52,6 +52,18 @@ gulp.task('styles_site', function() {
         .pipe(gulp.dest('./static/css'));
 });
 
+gulp.task('styles_modules', function() {
+    return gulp.src('./maraschino/modules/*/static/less/*.less', { base: './' })
+        .pipe(less())
+        .on('error', handleError)
+        .pipe(autoprefixer())
+        .pipe(minifycss())
+        .pipe(rename(function (path) {
+            path.dirname = path.dirname.slice(0, path.dirname.length - 4) + 'c';
+        }))
+        .pipe(gulp.dest('./'));
+});
+
 
 
 
@@ -151,6 +163,7 @@ gulp.task('watch', function () {
 gulp.task('default', ['clean'], function() {
     gulp.start('styles_lib',
                'styles_site',
+               'styles_modules',
                'scripts_lib',
                'scripts_site',
                'scripts_modules',
