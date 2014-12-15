@@ -24,7 +24,6 @@ var paths = {
         site: ['./assets/js/site/base.js',
                './assets/js/site/tools.js',
                './assets/js/site/container.js',
-               './assets/js/site/modules/*.js',
                './assets/js/site/render.js']
     },
     images: ['./assets/images/**']
