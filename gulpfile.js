@@ -15,8 +15,8 @@ var gulp = require('gulp'),
 var paths = {
     styles: {
         lib: [],
-        site: ['./assets/css/site/reset.less',
-               './assets/css/site/base.less']
+        site: ['./assets/less/site/reset.less',
+               './assets/less/site/base.less']
     },
     scripts: {
         lib: ['./assets/js/lib/jquery.js',
@@ -53,7 +53,7 @@ gulp.task('styles_site', function() {
 });
 
 gulp.task('styles_modules', function() {
-    return gulp.src('./maraschino/modules/*/static/less/*.less', { base: './' })
+    return gulp.src('./maraschino/modules/*/static/less/**', { base: './' })
         .pipe(less())
         .on('error', handleError)
         .pipe(autoprefixer())
@@ -88,7 +88,7 @@ gulp.task('scripts_site', function() {
 });
 
 gulp.task('scripts_modules', function() {
-    return gulp.src('./maraschino/modules/*/static/js/*.js', { base: './' })
+    return gulp.src('./maraschino/modules/*/static/js/**', { base: './' })
         .pipe(react())
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
@@ -147,8 +147,8 @@ var watching = false;
 
 gulp.task('watch', function () {
     watching = true;
-    gulp.watch('./assets/css/lib/*', ['styles_lib']);
-    gulp.watch('./assets/css/site/*', ['styles_site']);
+    gulp.watch('./assets/less/lib/*', ['styles_lib']);
+    gulp.watch('./assets/less/site/*', ['styles_site']);
     gulp.watch('./assets/js/lib/*', ['scripts_lib']);
     gulp.watch('./assets/js/site/*', ['scripts_site']);
     gulp.watch('./assets/images/*', ['default']);
