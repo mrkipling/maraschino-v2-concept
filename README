@@ -9,21 +9,28 @@ Anatomy of a module:
 
 /modules/<module_name>/
 
-        __init__.py: Import the module from module.py.
+    __init__.py: Import the module from module.py.
 
-        module.py: File name can be whatever you like; must provide a Blueprint.
-                   static_folder should be 'static/c' and static_url_path MUST
-                   be '/static', otherwise auto-loading the module's assets will
-                   not work.
+    module.py: File name can be whatever you like; must provide a Blueprint.
+        static_folder should be 'static/c' and static_url_path MUST be
+        '/static', otherwise auto-loading the module's assets will not work.
 
-        /static/: Directory containing static files (JS, CSS, images).
+    /static/: Directory containing static files (JS, CSS, images).
 
-                  /js/: Source JS files. Will be compiled automatically when
-                        running gulp. Make sure that you compile assets before
-                        distributing a module.
+        /js/: Source JS files. Will be compiled automatically when running gulp.
+            Make sure that you compile assets before distributing a module. For
+            now, only one source JS file is supported and it must be called
+            module.js.
 
-                  /c/: Compiled assets'; must contain both:
+        /less/: Source LESS files. Will be compiled automatically when running
+            gulp. Make sure that you compile assets before distributing a
+            module. For now, only one source LESS file is supported and it must
+            be called module.less.
 
-                       module.js: The module's JS file.
+            /c/: Compiled assets. Will be compiled automatically for each module
+                when running gulp, which will output the following two files
+                (both must be present):
 
-                       module.css: The module's CSS file.
+                module.js: The module's JS file.
+
+                module.css: The module's CSS file.
