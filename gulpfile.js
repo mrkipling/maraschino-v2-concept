@@ -16,7 +16,8 @@ var paths = {
     styles: {
         lib: [],
         site: ['./assets/less/site/reset.less',
-               './assets/less/site/base.less']
+               './assets/less/site/base.less',
+               './maraschino/modules/*/static/less/**']
     },
     scripts: {
         lib: ['./assets/js/lib/jquery.js',
@@ -24,6 +25,7 @@ var paths = {
         site: ['./assets/js/site/base.js',
                './assets/js/site/tools.js',
                './assets/js/site/container.js',
+               './maraschino/modules/*/static/js/**',
                './assets/js/site/render.js']
     },
     images: ['./assets/images/**']
@@ -52,8 +54,8 @@ gulp.task('styles_site', function() {
         .pipe(gulp.dest('./static/css'));
 });
 
-gulp.task('styles_modules', function() {
-    return gulp.src('./maraschino/modules/*/static/less/**', { base: './' })
+gulp.task('styles_plugins', function() {
+    return gulp.src('./maraschino/plugins/*/static/less/**', { base: './' })
         .pipe(less())
         .on('error', handleError)
         .pipe(autoprefixer())
@@ -87,8 +89,8 @@ gulp.task('scripts_site', function() {
         .pipe(gulp.dest('./static/js'));
 });
 
-gulp.task('scripts_modules', function() {
-    return gulp.src('./maraschino/modules/*/static/js/**', { base: './' })
+gulp.task('scripts_plugins', function() {
+    return gulp.src('./maraschino/plugins/*/static/js/**', { base: './' })
         .pipe(react())
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
@@ -163,9 +165,9 @@ gulp.task('watch', function () {
 gulp.task('default', ['clean'], function() {
     gulp.start('styles_lib',
                'styles_site',
-               'styles_modules',
+               //'styles_plugins',    // needs work
                'scripts_lib',
                'scripts_site',
-               'scripts_modules',
+               //'scripts_plugins',   // needs work
                'images');
 });

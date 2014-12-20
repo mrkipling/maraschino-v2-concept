@@ -8,6 +8,8 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 load_blueprints(app, 'modules')
+plugins = load_blueprints(app, 'plugins')
+print plugins
 
 settings = {
     'columns': [
@@ -21,7 +23,7 @@ settings = {
 @app.route('/')
 def index():
     return render_template('index.html',
-                           modules = app.blueprints.keys(),
+                           plugins = plugins,
                            settings = settings)
 
 if __name__ == "__main__":
