@@ -1,1 +1,1 @@
-/** @jsx React.DOM */
+/* module JS */

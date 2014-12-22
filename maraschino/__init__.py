@@ -9,7 +9,6 @@ app = Flask(__name__)
 
 load_blueprints(app, 'modules')
 plugins = load_blueprints(app, 'plugins')
-print plugins
 
 settings = {
     'columns': [

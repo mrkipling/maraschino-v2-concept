@@ -54,18 +54,6 @@ gulp.task('styles_site', function() {
         .pipe(gulp.dest('./static/css'));
 });
 
-gulp.task('styles_plugins', function() {
-    return gulp.src('./maraschino/plugins/*/static/less/**', { base: './' })
-        .pipe(less())
-        .on('error', handleError)
-        .pipe(autoprefixer())
-        .pipe(minifycss())
-        .pipe(rename(function (path) {
-            path.dirname = path.dirname.slice(0, path.dirname.length - 4) + 'c';
-        }))
-        .pipe(gulp.dest('./'));
-});
-
 
 
 
@@ -87,18 +75,6 @@ gulp.task('scripts_site', function() {
         .pipe(concat('site.js'))
         //.pipe(uglify())
         .pipe(gulp.dest('./static/js'));
-});
-
-gulp.task('scripts_plugins', function() {
-    return gulp.src('./maraschino/plugins/*/static/js/**', { base: './' })
-        .pipe(react())
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
-        //.pipe(uglify())
-        .pipe(rename(function (path) {
-            path.dirname = path.dirname.slice(0, path.dirname.length - 2) + 'c';
-        }))
-        .pipe(gulp.dest('./'));
 });
 
 
@@ -165,9 +141,7 @@ gulp.task('watch', function () {
 gulp.task('default', ['clean'], function() {
     gulp.start('styles_lib',
                'styles_site',
-               //'styles_plugins',    // needs work
                'scripts_lib',
                'scripts_site',
-               //'scripts_plugins',   // needs work
                'images');
 });

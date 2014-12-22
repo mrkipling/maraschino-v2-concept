@@ -15,22 +15,14 @@ Anatomy of a module:
         static_folder should be 'static/c' and static_url_path MUST be
         '/static', otherwise auto-loading the module's assets will not work.
 
-    /static/: Directory containing static files (JS, CSS, images).
+    /static/: Directory containing static files (JS, CSS, images). In the root
+        (or subdirectories) you should place your source static files. You will
+        want to compile them using Gulp and output them to directory 'c' (see
+        below).
 
-        /js/: Source JS files. Will be compiled automatically when running gulp.
-            Make sure that you compile assets before distributing a module. For
-            now, only one source JS file is supported and it must be called
-            module.js.
+        /c/: Compiled assets. These will be served and used. They must be
+            named like so:
 
-        /less/: Source LESS files. Will be compiled automatically when running
-            gulp. Make sure that you compile assets before distributing a
-            module. For now, only one source LESS file is supported and it must
-            be called module.less.
+            module.js: The module's JS file.
 
-            /c/: Compiled assets. Will be compiled automatically for each module
-                when running gulp, which will output the following two files
-                (both must be present):
-
-                module.js: The module's JS file.
-
-                module.css: The module's CSS file.
+            module.css: The module's CSS file.
