@@ -19,10 +19,10 @@
             <link href="/module/{{ plugin }}/static/module.css" rel="stylesheet">
         {% endfor %}
 
-        {# settings #}
+        {# config #}
 
-        <meta name="columns" content="{{ settings.columns | safe }}">
-        <meta name="num_columns" content="{{ settings.num_columns }}">
+        <meta name="columns" content="{{ config.columns | safe }}">
+        <meta name="num_columns" content="{{ config.num_columns }}">
 
     </head>
     <body>
