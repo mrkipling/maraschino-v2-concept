@@ -4,21 +4,20 @@ app = Flask(__name__)
 from helpers import load_blueprints
 from settings import SETTINGS
 
-load_blueprints(app, 'modules')
+MODULES = load_blueprints(app, 'modules')
 PLUGINS = load_blueprints(app, 'plugins')
 
 CONFIG = {
     'columns': [
-        [],
-        [],
         ['RecentEpisodes'],
+        [],
     ],
-    'num_columns': 3,
 }
 
 @app.route('/')
 def index():
     return render_template('index.html',
+                           modules = MODULES + PLUGINS,
                            plugins = PLUGINS,
                            config = CONFIG)
 

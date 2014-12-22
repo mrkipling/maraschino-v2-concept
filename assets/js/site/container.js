@@ -7,8 +7,6 @@
 Maraschino.Container.Base = React.createClass({
     getInitialState: function() {
         var columns = Maraschino.Tools.getSetting('columns', 'json');
-        var num_columns = Math.min(columns.length, Maraschino.Tools.getSetting('num_columns', 'int'));
-        columns = columns.slice(0, num_columns);
 
         return {
             columns: columns
