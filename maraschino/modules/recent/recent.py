@@ -1,4 +1,5 @@
 import json
+from maraschino.helpers import xbmc_api
 from flask import Blueprint
 
 module = Blueprint('recent', __name__,
@@ -7,6 +8,8 @@ module = Blueprint('recent', __name__,
 
 @module.route('/episodes/')
 def recent():
+    xbmc = xbmc_api()
+
     episodes = {
         "episodes": [{
             "name": "Test"

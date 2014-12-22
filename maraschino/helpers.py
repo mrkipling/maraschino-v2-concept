@@ -1,6 +1,6 @@
-import os
-import sys
-import imp
+import os, sys, imp
+from lib.xbmcjson import XBMC, PLAYER_VIDEO
+from settings import SETTINGS
 
 def check_frozen():
     # All of the modules are built-in to the interpreter, e.g., by py2exe
@@ -43,3 +43,6 @@ def load_blueprints(app, path):
                 plugins.append(getattr(mods[fname], 'module').name)
 
     return plugins
+
+def xbmc_api():
+    return XBMC(SETTINGS['api'], SETTINGS['username'], SETTINGS['password'])
