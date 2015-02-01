@@ -45,4 +45,5 @@ def load_blueprints(app, path):
     return plugins
 
 def xbmc_api():
-    return XBMC(SETTINGS['api'], SETTINGS['username'], SETTINGS['password'])
+    api_url = '%s://%s:%s/jsonrpc' % (SETTINGS['protocol'], SETTINGS['server'], SETTINGS['port'])
+    return XBMC(api_url, SETTINGS['username'], SETTINGS['password'])

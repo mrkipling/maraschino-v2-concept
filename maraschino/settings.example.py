@@ -1,5 +1,7 @@
 SETTINGS = {
-    'api': 'http://server/jsonrpc',
+    'protocol': 'http',
+    'server': '',
+    'port': '',
     'username': '',
     'password': '',
 }
