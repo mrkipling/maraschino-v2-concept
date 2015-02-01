@@ -38,9 +38,10 @@ Maraschino.Container.Column = React.createClass({
         var modules = this.props.module_names.length === 0 ? (
             <span>&nbsp;</span>
         ) : this.props.module_names.map(function(module_name) {
-            return Maraschino.Modules[module_name]({
-                key: 'module-' + module_name
-            });
+            var Module = Maraschino.Modules[module_name];
+            return (
+                <Module key={'module-' + module_name} />
+            );
         });
 
         return (
