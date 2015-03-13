@@ -9,18 +9,10 @@
         <title>Maraschino</title>
 
         {# CSS #}
-
         <link href="/static/css/lib.css" rel="stylesheet">
         <link href="/static/css/site.css" rel="stylesheet">
 
-        {# module CSS #}
-
-        {% for plugin in plugins %}
-            <link href="/module/{{ plugin }}/static/module.css" rel="stylesheet">
-        {% endfor %}
-
         {# config #}
-
         <meta name="columns" content="{{ config.columns | safe }}">
         <meta name="num_columns" content="{{ config.num_columns }}">
 
@@ -28,19 +20,10 @@
     <body>
 
         {# container element that React binds to #}
-
         <div id="container" class="container"></div>
 
-        {# CSS #}
-
-        <script src="/static/js/lib.js"></script>
+        {# JS #}
         <script src="/static/js/site.js"></script>
-
-        {# module JS #}
-
-        {% for plugin in plugins %}
-            <script src="/module/{{ plugin }}/static/module.js"></script>
-        {% endfor %}
 
     </body>
 </html>

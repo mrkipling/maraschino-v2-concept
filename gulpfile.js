@@ -1,14 +1,16 @@
 var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
+    browserify = require('browserify'),
     cache = require('gulp-cache'),
     concat = require('gulp-concat'),
     imagemin = require('gulp-imagemin'),
-    jshint = require('gulp-jshint'),
     less = require('gulp-less'),
     minifycss = require('gulp-minify-css'),
     react = require('gulp-react'),
     rename = require('gulp-rename'),
     rimraf = require('gulp-rimraf'),
+    sourcemaps = require('gulp-sourcemaps'),
+    transform = require('vinyl-transform'),
     uglify = require('gulp-uglify'),
     watch = require('gulp-watch');
 
@@ -20,13 +22,7 @@ var paths = {
                './maraschino/modules/*/static/less/**']
     },
     scripts: {
-        lib: ['./assets/js/lib/jquery.js',
-              './assets/js/lib/react-with-addons.js'],
-        site: ['./assets/js/site/base.js',
-               './assets/js/site/tools.js',
-               './assets/js/site/container.js',
-               './maraschino/modules/*/static/js/**',
-               './assets/js/site/render.js']
+        site: './assets/js/site/base.jsx'
     },
     images: ['./assets/images/**']
 };
@@ -37,14 +33,14 @@ var paths = {
 
 /*--- styles ---*/
 
-gulp.task('styles_lib', function() {
+gulp.task('styles:lib', function() {
     return gulp.src(paths.styles.lib)
         .pipe(less())
         .pipe(concat('lib.css'))
         .pipe(gulp.dest('./static/css'));
 });
 
-gulp.task('styles_site', function() {
+gulp.task('styles:site', function() {
     return gulp.src(paths.styles.site)
         .pipe(less())
         .on('error', handleError)
@@ -60,20 +56,21 @@ gulp.task('styles_site', function() {
 
 /*--- scripts ---*/
 
-gulp.task('scripts_lib', function() {
-    return gulp.src(paths.scripts.lib)
-        .pipe(concat('lib.js'))
-        //.pipe(uglify())
-        .pipe(gulp.dest('./static/js'));
-});
+gulp.task('scripts:site', function() {
+    var browserified = transform(function(filename) {
+        return browserify({
+            entries: filename,
+            extensions: ['.jsx'],
+            debug: true
+        }).bundle();
+    });
 
-gulp.task('scripts_site', function() {
     return gulp.src(paths.scripts.site)
-        .pipe(react())
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'))
-        .pipe(concat('site.js'))
-        //.pipe(uglify())
+        .pipe(browserified)
+        .pipe(sourcemaps.init({ loadMaps: true }))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
+        .pipe(rename('site.js'))
         .pipe(gulp.dest('./static/js'));
 });
 
@@ -125,10 +122,9 @@ var watching = false;
 
 gulp.task('watch', function () {
     watching = true;
-    gulp.watch('./assets/less/lib/*', ['styles_lib']);
-    gulp.watch('./assets/less/site/*', ['styles_site']);
-    gulp.watch('./assets/js/lib/*', ['scripts_lib']);
-    gulp.watch('./assets/js/site/*', ['scripts_site']);
+    gulp.watch('./assets/less/lib/*', ['styles:lib']);
+    gulp.watch('./assets/less/site/*', ['styles:site']);
+    gulp.watch('./assets/js/site/*', ['scripts:site']);
     gulp.watch('./assets/images/*', ['default']);
 });
 
@@ -139,9 +135,8 @@ gulp.task('watch', function () {
 /*--- default task ---*/
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('styles_lib',
-               'styles_site',
-               'scripts_lib',
-               'scripts_site',
+    gulp.start('styles:lib',
+               'styles:site',
+               'scripts:site',
                'images');
 });

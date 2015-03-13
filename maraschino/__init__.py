@@ -5,7 +5,6 @@ from helpers import load_blueprints
 from settings import SETTINGS
 
 MODULES = load_blueprints(app, 'modules')
-PLUGINS = load_blueprints(app, 'plugins')
 
 CONFIG = {
     'columns': [
@@ -17,8 +16,7 @@ CONFIG = {
 @app.route('/')
 def index():
     return render_template('index.html',
-                           modules = MODULES + PLUGINS,
-                           plugins = PLUGINS,
+                           modules = MODULES,
                            config = CONFIG)
 
 if __name__ == "__main__":
