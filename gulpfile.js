@@ -15,7 +15,6 @@ var gulp = require('gulp'),
     rimraf = require('gulp-rimraf'),
     source = require('vinyl-source-stream'),
     sourcemaps = require('gulp-sourcemaps'),
-    transform = require('vinyl-transform'),
     uglify = require('gulp-uglify'),
     watch = require('gulp-watch'),
     watchify = require('watchify');
