@@ -18,7 +18,6 @@
     "gulp-minify-css": "~0.3.7",
     "gulp-imagemin": "~1.0.0",
     "gulp-cache": "~0.2.1",
-    "gulp-react": "~2.0.0",
     "gulp-rename": "~1.2.0",
     "gulp-sourcemaps": "~1.5.0",
     "gulp-uglify": "~1.1.0",
@@ -28,7 +27,8 @@
     "watchify": "~2.4.0",
     "gulp-if": "~1.2.5",
     "gulp-livereload": "~3.8.0",
-    "gulp-buffer": "0.0.2"
+    "gulp-buffer": "0.0.2",
+    "reactify": "~1.1.0"
   },
   "dependencies": {
     "react": "0.13.0"

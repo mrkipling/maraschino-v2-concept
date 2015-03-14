@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     livereload = require('gulp-livereload'),
     minifycss = require('gulp-minify-css'),
-    react = require('gulp-react'),
+    reactify = require('reactify'),
     rename = require('gulp-rename'),
     rimraf = require('gulp-rimraf'),
     source = require('vinyl-source-stream'),
@@ -94,6 +94,7 @@ function browserified() {
     }
 
     b.add(paths.scripts.site);
+    b.transform(reactify);
     bundle(b);
 }
 
