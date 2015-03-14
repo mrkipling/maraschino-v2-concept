@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     buffer = require('gulp-buffer'),
     cache = require('gulp-cache'),
     concat = require('gulp-concat'),
+    es6ify = require('es6ify'),
     gulpif = require('gulp-if'),
     imagemin = require('gulp-imagemin'),
     less = require('gulp-less'),
@@ -93,8 +94,10 @@ function browserified() {
         });
     }
 
-    b.add(paths.scripts.site);
-    b.transform(reactify);
+    b.add(paths.scripts.site)
+        .transform(reactify)
+        .transform(es6ify.configure(/.jsx/));
+
     bundle(b);
 }
 
