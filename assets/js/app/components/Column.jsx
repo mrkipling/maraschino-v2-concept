@@ -6,6 +6,10 @@ var Modules = {
 
 var Column = React.createClass({
 
+    propTypes: {
+        moduleNames: React.PropTypes.array
+    },
+
     render: function() {
         var moduleNames = this.props.moduleNames;
 
