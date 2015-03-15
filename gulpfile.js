@@ -26,7 +26,7 @@ var paths = {
                './assets/less/app/base.less']
     },
     scripts: {
-        app: './assets/js/app/app.jsx'
+        app: './assets/js/app/App.jsx'
     },
     images: ['./assets/images/**']
 };

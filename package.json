@@ -31,6 +31,10 @@
     "es6ify": "~1.6.0"
   },
   "dependencies": {
-    "react": "0.13.0"
+    "react": "0.13.0",
+    "flux": "~2.0.1",
+    "events": "~1.0.2",
+    "object-assign": "~2.0.0",
+    "underscore": "~1.8.2"
   }
 }
