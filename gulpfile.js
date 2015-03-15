@@ -162,9 +162,9 @@ function handleError(err) {
 
 gulp.task('watch', ['scripts:app:watch'], function() {
     watching = true;
-    gulp.watch('./assets/less/lib/*', ['styles:lib']);
-    gulp.watch('./assets/less/app/*', ['styles:app']);
-    gulp.watch('./assets/images/*', ['default']);
+    gulp.watch('./assets/less/lib/**', ['styles:lib']);
+    gulp.watch('./assets/less/app/**', ['styles:app']);
+    gulp.watch('./assets/images/**', ['default']);
 
     // start live reload server
     livereload.listen(35729);
