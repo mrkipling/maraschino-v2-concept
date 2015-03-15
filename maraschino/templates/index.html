@@ -9,8 +9,8 @@
         <title>Maraschino</title>
 
         {# CSS #}
-        <link href="/static/css/lib.css" rel="stylesheet">
-        <link href="/static/css/site.css" rel="stylesheet">
+        {# <link href="/static/css/lib.css" rel="stylesheet"> #}
+        <link href="/static/css/app.css" rel="stylesheet">
 
         {# config #}
         <meta name="columns" content="{{ config.columns | safe }}">
@@ -19,10 +19,10 @@
     <body>
 
         {# container element that React binds to #}
-        <div id="container" class="container"></div>
+        <div id="app"></div>
 
         {# JS #}
-        <script src="/static/js/site.js"></script>
+        <script src="/static/js/app.js"></script>
 
     </body>
 </html>

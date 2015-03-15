@@ -22,12 +22,11 @@ var gulp = require('gulp'),
 var paths = {
     styles: {
         lib: [],
-        site: ['./assets/less/site/reset.less',
-               './assets/less/site/base.less',
-               './maraschino/modules/*/static/less/**']
+        app: ['./assets/less/app/reset.less',
+               './assets/less/app/base.less']
     },
     scripts: {
-        site: './assets/js/site/base.jsx'
+        app: './assets/js/app/app.jsx'
     },
     images: ['./assets/images/**']
 };
@@ -46,13 +45,13 @@ gulp.task('styles:lib', function() {
         .pipe(gulpif(watching, livereload()));
 });
 
-gulp.task('styles:site', function() {
-    return gulp.src(paths.styles.site)
+gulp.task('styles:app', function() {
+    return gulp.src(paths.styles.app)
         .pipe(less())
         .on('error', handleError)
         .pipe(autoprefixer())
         .pipe(minifycss())
-        .pipe(concat('site.css'))
+        .pipe(concat('app.css'))
         .pipe(gulp.dest('./static/css'))
         .pipe(gulpif(watching, livereload()));
 });
@@ -65,16 +64,16 @@ gulp.task('styles:site', function() {
 
 var watching = false;
 
-gulp.task('scripts:site', function() {
+gulp.task('scripts:app', function() {
     browserified();
 });
 
-gulp.task('scripts:site:watch', function() {
+gulp.task('scripts:app:watch', function() {
     watching = true;
     browserified();
 });
 
-// Browserify site scripts
+// Browserify app scripts
 
 function browserified() {
     var b = browserify({
@@ -93,7 +92,7 @@ function browserified() {
         });
     }
 
-    b.add(paths.scripts.site)
+    b.add(paths.scripts.app)
         .transform(reactify)
         .transform(es6ify.configure(/.jsx/));
 
@@ -104,7 +103,7 @@ function browserified() {
 
 function bundle(b) {
     b.bundle()
-        .pipe(source('site.js'))
+        .pipe(source('app.js'))
         .pipe(buffer())
         //.pipe(sourcemaps.init({ loadMaps: true }))
         //.pipe(uglify())
@@ -158,10 +157,10 @@ function handleError(err) {
 
 /*--- watch ---*/
 
-gulp.task('watch', ['scripts:site:watch'], function() {
+gulp.task('watch', ['scripts:app:watch'], function() {
     watching = true;
     gulp.watch('./assets/less/lib/*', ['styles:lib']);
-    gulp.watch('./assets/less/site/*', ['styles:site']);
+    gulp.watch('./assets/less/app/*', ['styles:app']);
     gulp.watch('./assets/images/*', ['default']);
 
     // start live reload server
@@ -176,7 +175,7 @@ gulp.task('watch', ['scripts:site:watch'], function() {
 
 gulp.task('default', ['clean'], function() {
     gulp.start('styles:lib',
-               'styles:site',
-               'scripts:site',
+               'styles:app',
+               'scripts:app',
                'images');
 });
