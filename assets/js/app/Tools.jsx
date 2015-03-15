@@ -31,29 +31,4 @@ Tools.log = function (message, type) {
     }
 };
 
-/**
- * Returns a setting value stored in a meta tag.
- * @param {string} setting - The setting to return the value of.
- * @param {string} type - How should the setting be parsed?
- */
-
-Tools.getSetting = function(setting, type) {
-    var val = document.querySelectorAll('meta[name=columns]')[0].getAttribute('content');
-
-    switch (type) {
-        case 'json':
-        // return JSON (have to replace single quotes with double quotes for
-        // the parser to recognise it as valid JSON)
-        return JSON.parse(val.replace(/'/g, '\"'));
-
-        case 'int':
-        // returns an int
-        return parseInt(val);
-
-        default:
-        // return a string
-        return val;
-    }
-};
-
 module.exports = Tools;

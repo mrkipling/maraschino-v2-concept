@@ -1,7 +1,7 @@
 var React = require('react');
 
 var AppStore = require('./stores/AppStore');
-var AppActionCreators = require('./actions/AppActionCreators');
+var Column = require('./components/Column');
 
 var App = React.createClass({
 
@@ -26,8 +26,16 @@ var App = React.createClass({
     },
 
     render: function() {
+        var columns = this.state.columns;
+        var eleColumns = columns.map(function(column, index) {
+            return (
+                <Column key={'column-' + index} moduleNames={column} />
+            );
+        });
+
         return (
-            <div>
+            <div className={'columns-' + columns.length}>
+                {eleColumns}
             </div>
         );
     }

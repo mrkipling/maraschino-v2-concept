@@ -23,7 +23,9 @@ var paths = {
     styles: {
         lib: [],
         app: ['./assets/less/app/reset.less',
-               './assets/less/app/base.less']
+              './assets/less/app/base.less',
+              './assets/less/app/components/**/*.less',
+              './assets/less/app/modules/**/*.less']
     },
     scripts: {
         app: './assets/js/app/App.jsx'
@@ -103,6 +105,7 @@ function browserified() {
 
 function bundle(b) {
     b.bundle()
+        .on('error', function() {}) // do nothing
         .pipe(source('app.js'))
         .pipe(buffer())
         //.pipe(sourcemaps.init({ loadMaps: true }))
