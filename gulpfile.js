@@ -105,7 +105,7 @@ function browserified() {
 
 function bundle(b) {
     b.bundle()
-        .on('error', function() {}) // do nothing
+        .on('error', handleError)
         .pipe(source('app.js'))
         .pipe(buffer())
         //.pipe(sourcemaps.init({ loadMaps: true }))
