@@ -16,17 +16,18 @@ var RecentEpisodes = React.createClass({
     render: function() {
         var episodes = this.state.episodes.map(function(episode) {
             return (
-                <li>
-                    <strong>{episode.showtitle}</strong><br />
-                    {episode.label}
+                <li className="module-recent-episodes--list--item">
+                    <p className="module-recent-episodes--list--show-title">{episode.showtitle}</p>
+                    <p className="module-recent-episodes--list--episode-number">Season {episode.season}, Episode {episode.episode}</p>
+                    <p className="module-recent-episodes--list--episode-title">{episode.title}</p>
                 </li>
             );
         });
 
         return (
-            <div className="module">
-                <p>Recent Episodes</p>
-                <ul>
+            <div className="module module-recent-episodes">
+                <p className="module--title">Recent Episodes</p>
+                <ul className="module-recent-episodes--list">
                     {episodes}
                 </ul>
             </div>
