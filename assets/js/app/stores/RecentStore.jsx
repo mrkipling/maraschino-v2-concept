@@ -1,7 +1,6 @@
 var _ = require('underscore');
-var EventEmitter = require('events').EventEmitter;
-var assign = require('object-assign');
 
+var Tools = require('../Tools');
 var Dispatcher = require('../dispatcher/Dispatcher');
 
 var recentEpisodes = [];
@@ -11,19 +10,7 @@ function getRecentEpisodes() {
     RecentStore.emitChange();
 }
 
-var RecentStore = assign({}, EventEmitter.prototype, {
-
-    emitChange: function() {
-        this.emit('change');
-    },
-
-    addChangeListener: function(callback) {
-        this.on('change', callback);
-    },
-
-    removeChangeListener: function(callback) {
-        this.removeListener('change', callback);
-    },
+var RecentStore = Tools.createStore({
 
     /**
      * Returns recently added episodes.

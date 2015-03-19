@@ -1,7 +1,6 @@
 var _ = require('underscore');
-var EventEmitter = require('events').EventEmitter;
-var assign = require('object-assign');
 
+var Tools = require('../Tools');
 var Dispatcher = require('../dispatcher/Dispatcher');
 
 var settings = {};
@@ -43,19 +42,7 @@ function initialiseSettings() {
  * App Store.
  */
 
-var AppStore = assign({}, EventEmitter.prototype, {
-
-    emitChange: function() {
-        this.emit('change');
-    },
-
-    addChangeListener: function(callback) {
-        this.on('change', callback);
-    },
-
-    removeChangeListener: function(callback) {
-        this.removeListener('change', callback);
-    },
+var AppStore = Tools.createStore({
 
     getSettings: function() {
         if (_.isEmpty(settings)) {
