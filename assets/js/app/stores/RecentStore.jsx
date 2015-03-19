@@ -1,12 +1,17 @@
 var _ = require('underscore');
+var qwest = require('qwest');
 
 var Tools = require('../Tools');
 var Dispatcher = require('../dispatcher/Dispatcher');
 
 var recentEpisodes = [];
 
-function getRecentEpisodes() {
-    // TODO: XHR
+function loadRecentEpisodes() {
+    qwest.get('/module/recent/episodes/')
+         .then(function(response) {
+             recentEpisodes = response;
+         });
+
     RecentStore.emitChange();
 }
 
@@ -23,7 +28,7 @@ var RecentStore = Tools.createStore({
         }
 
         if (_.isEmpty(recentEpisodes) || refresh) {
-            getRecentEpisodes();
+            loadRecentEpisodes();
         }
 
         return recentEpisodes;

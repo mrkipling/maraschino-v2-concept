@@ -28,7 +28,8 @@
     "gulp-livereload": "~3.8.0",
     "gulp-buffer": "0.0.2",
     "reactify": "~1.1.0",
-    "es6ify": "~1.6.0"
+    "es6ify": "~1.6.0",
+    "qwest": "~1.5.9"
   },
   "dependencies": {
     "react": "0.13.0",
