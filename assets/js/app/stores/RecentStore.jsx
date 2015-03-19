@@ -7,12 +7,11 @@ var Dispatcher = require('../dispatcher/Dispatcher');
 var recentEpisodes = [];
 
 function loadRecentEpisodes() {
-    qwest.get('/module/recent/episodes/')
+    qwest.get('/module/recent/episodes/', null, { responseType: 'json' })
          .then(function(response) {
              recentEpisodes = response;
+             RecentStore.emitChange();
          });
-
-    RecentStore.emitChange();
 }
 
 var RecentStore = Tools.createStore({
