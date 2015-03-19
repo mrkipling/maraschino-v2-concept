@@ -2,27 +2,14 @@ var React = require('react');
 
 var AppStore = require('./stores/AppStore');
 var Column = require('./components/Column');
+var StoreWatchMixin = require('./mixins/StoreWatchMixin');
 
 var App = React.createClass({
 
+    mixins: [StoreWatchMixin(AppStore)],
+
     getStateFromStore: function() {
         return AppStore.getSettings();
-    },
-
-    onChange: function() {
-        this.setState(this.getStateFromStore());
-    },
-
-    getInitialState: function() {
-        return this.getStateFromStore();
-    },
-
-    componentDidMount: function() {
-        AppStore.addChangeListener(this.onChange);
-    },
-
-    componentWillUnmount: function() {
-        AppStore.removeChangeListener(this.onChange);
     },
 
     render: function() {
