@@ -22,9 +22,7 @@ var RecentStore = Tools.createStore({
      */
 
     getRecentEpisodes: function(refresh) {
-        if (typeof refresh === 'undefined') {
-            refresh = false;
-        }
+        refresh = refresh || false;
 
         if (_.isEmpty(recentEpisodes) || refresh) {
             loadRecentEpisodes();
