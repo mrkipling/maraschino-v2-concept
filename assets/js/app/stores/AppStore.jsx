@@ -12,7 +12,7 @@ var settings = {};
  */
 
 function getMetaSetting(setting, type) {
-    var val = document.querySelectorAll('meta[name=columns]')[0].getAttribute('content');
+    var val = document.querySelectorAll('meta[name=' + setting +']')[0].getAttribute('content');
 
     switch (type) {
         case 'json':
