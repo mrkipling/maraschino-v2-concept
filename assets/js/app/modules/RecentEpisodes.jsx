@@ -3,6 +3,9 @@ var React = require('react');
 var RecentStore = require('../stores/RecentStore');
 var StoreWatchMixin = require('../mixins/StoreWatchMixin');
 
+var Paginator = require('../components/Paginator');
+var RecentEpisode = require('../components/RecentEpisode');
+
 var RecentEpisodes = React.createClass({
 
     mixins: [StoreWatchMixin(RecentStore)],
@@ -14,22 +17,18 @@ var RecentEpisodes = React.createClass({
     },
 
     render: function() {
-        var episodes = this.state.episodes.map(function(episode) {
+        var renderEpisode = function(episode) {
             return (
-                <li className="module-recent-episodes--list--item">
-                    <p className="module-recent-episodes--list--show-title">{episode.showtitle}</p>
-                    <p className="module-recent-episodes--list--episode-number">Season {episode.season}, Episode {episode.episode}</p>
-                    <p className="module-recent-episodes--list--episode-title">{episode.title}</p>
-                </li>
+                <RecentEpisode episode={episode} />
             );
-        });
+        }
 
         return (
             <div className="module module-recent-episodes">
                 <p className="module--title">Recent Episodes</p>
-                <ul className="module-recent-episodes--list">
-                    {episodes}
-                </ul>
+                <div className="module-recent-episodes--list">
+                    <Paginator items={this.state.episodes} renderItem={renderEpisode} />
+                </div>
             </div>
         );
     }
