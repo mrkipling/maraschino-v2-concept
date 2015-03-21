@@ -10,8 +10,7 @@ var Tools = {};
  * @param {string} type - Log type. Defaults to 'log'. See code for accepted values.
  */
 
-Tools.log = function(message, type) {
-    type = type || 'log';
+Tools.log = function(message, type='log') {
     switch (type) {
     case 'warn':
         console.warn(message); break;

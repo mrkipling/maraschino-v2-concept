@@ -21,9 +21,7 @@ var RecentStore = Tools.createStore({
      * @param {boolean} refresh - Force XHR check for new items.
      */
 
-    getRecentEpisodes: function(refresh) {
-        refresh = refresh || false;
-
+    getRecentEpisodes: function(refresh=false) {
         if (_.isEmpty(recentEpisodes) || refresh) {
             loadRecentEpisodes();
         }
