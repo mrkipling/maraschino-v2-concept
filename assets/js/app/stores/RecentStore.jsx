@@ -6,6 +6,11 @@ var Dispatcher = require('../dispatcher/Dispatcher');
 
 var recentEpisodes = [];
 
+/**
+ * Private function to fetch recent episodes via XHR. If you want to force an
+ * XHR check then use `RecentStore.getRecentEpisodes(true)`.
+ */
+
 function loadRecentEpisodes() {
     qwest.get('/module/recent/episodes/', null, { responseType: 'json' })
          .then(function(response) {
@@ -23,8 +28,13 @@ var RecentStore = Tools.createStore({
      */
 
     getRecentEpisodes: function(refresh=false) {
+        // if the recentEpisodes array is empty or we're forcing a refresh
         if (_.isEmpty(recentEpisodes) || refresh) {
+            // fetch from localStorage so that we can display information
+            // immediately on page load
             recentEpisodes = Tools.getLocalStore('recentEpisodes');
+
+            // XHR load recent episodes
             loadRecentEpisodes();
         }
 
