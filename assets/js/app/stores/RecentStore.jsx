@@ -10,6 +10,7 @@ function loadRecentEpisodes() {
     qwest.get('/module/recent/episodes/', null, { responseType: 'json' })
          .then(function(response) {
              recentEpisodes = response;
+             Tools.setLocalStore('recentEpisodes', recentEpisodes);
              RecentStore.emitChange();
          });
 }
@@ -23,6 +24,7 @@ var RecentStore = Tools.createStore({
 
     getRecentEpisodes: function(refresh=false) {
         if (_.isEmpty(recentEpisodes) || refresh) {
+            recentEpisodes = Tools.getLocalStore('recentEpisodes');
             loadRecentEpisodes();
         }
 

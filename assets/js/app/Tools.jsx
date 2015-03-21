@@ -53,4 +53,24 @@ Tools.createStore = function(methods) {
     return assign({}, EventEmitter.prototype, _.extend(defaultMethods, methods));
 };
 
+/**
+ * Set local storage.
+ * @param {string} key - The name of the store.
+ * @param {object} value - The object or array to store.
+ */
+
+Tools.setLocalStore = function(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+};
+
+/**
+ * Get local storage.
+ * @param {string} key - The name of the store.
+ */
+
+Tools.getLocalStore = function(key, defaultValue=[]) {
+    var store = localStorage.getItem(key);
+    return store ? JSON.parse(store) : defaultValue;
+};
+
 module.exports = Tools;
