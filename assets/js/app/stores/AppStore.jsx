@@ -42,7 +42,7 @@ function initialiseSettings() {
  * App Store.
  */
 
-var AppStore = Tools.createStore({
+var AppStore = Tools.Store.create({
 
     getSettings: function() {
         if (_.isEmpty(settings)) {

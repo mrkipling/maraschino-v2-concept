@@ -15,12 +15,12 @@ function loadRecentEpisodes() {
     qwest.get('/module/recent/episodes/', null, { responseType: 'json' })
          .then(function(response) {
              recentEpisodes = response;
-             Tools.setLocalStore('recentEpisodes', recentEpisodes);
+             Tools.LocalStorage.setItem('recentEpisodes', recentEpisodes);
              RecentStore.emitChange();
          });
 }
 
-var RecentStore = Tools.createStore({
+var RecentStore = Tools.Store.create({
 
     /**
      * Returns recently added episodes.
@@ -32,7 +32,9 @@ var RecentStore = Tools.createStore({
         if (_.isEmpty(recentEpisodes) || refresh) {
             // fetch from localStorage so that we can display information
             // immediately on page load
-            recentEpisodes = Tools.getLocalStore('recentEpisodes');
+            if (_.isEmpty(recentEpisodes)) {
+                recentEpisodes = Tools.LocalStorage.getItem('recentEpisodes') || [];
+            }
 
             // XHR load recent episodes
             loadRecentEpisodes();
