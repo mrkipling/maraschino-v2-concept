@@ -1,5 +1,9 @@
 var React = require('react');
 
+/**
+ * Render a recent movie.
+ */
+
 var RecentMovie = React.createClass({
 
     propTypes: {

@@ -1,5 +1,9 @@
 var React = require('react');
 
+/**
+ * Render a recent episode.
+ */
+
 var RecentEpisode = React.createClass({
 
     propTypes: {

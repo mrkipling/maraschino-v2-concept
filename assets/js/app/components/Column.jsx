@@ -7,10 +7,14 @@ var Modules = {
     RecentMovies: RecentMedia.RecentMovies
 };
 
+/**
+ * Render a column containing modules.
+ */
+
 var Column = React.createClass({
 
     propTypes: {
-        moduleNames: React.PropTypes.array
+        moduleNames: React.PropTypes.array.isRequired
     },
 
     render: function() {

@@ -7,7 +7,57 @@ var Paginator = require('../components/Paginator');
 var RecentEpisode = require('../components/RecentEpisode');
 var RecentMovie = require('../components/RecentMovie');
 
+/**
+ * Module: Recent Episodes.
+ */
+
+var RecentEpisodes = React.createClass({
+
+    render: function() {
+        var renderEpisode = function(episode) {
+            return (
+                <RecentEpisode episode={episode} />
+            );
+        }
+
+        return (
+            <RecentMedia type={'episodes'} renderItem={renderEpisode} />
+        );
+    }
+
+});
+
+/**
+ * Module: Recent Movies.
+ */
+
+var RecentMovies = React.createClass({
+
+    render: function() {
+        var renderMovie = function(movie) {
+            return (
+                <RecentMovie movie={movie} />
+            );
+        }
+
+        return (
+            <RecentMedia type={'movies'} renderItem={renderMovie} />
+        );
+    }
+
+});
+
+/**
+ * Displays recent media.
+ * Used by RecentEpisodes and RecentMovies.
+ */
+
 var RecentMedia = React.createClass({
+
+    propTypes: {
+        type: React.PropTypes.string.isRequired,
+        renderItem: React.PropTypes.func.isRequired
+    },
 
     mixins: [StoreWatchMixin(RecentStore)],
 
@@ -30,38 +80,6 @@ var RecentMedia = React.createClass({
             </div>
         );
     }
-});
-
-var RecentEpisodes = React.createClass({
-
-    render: function() {
-        var renderEpisode = function(episode) {
-            return (
-                <RecentEpisode episode={episode} />
-            );
-        }
-
-        return (
-            <RecentMedia type={'episodes'} renderItem={renderEpisode} />
-        );
-    }
-
-});
-
-var RecentMovies = React.createClass({
-
-    render: function() {
-        var renderMovie = function(movie) {
-            return (
-                <RecentMovie movie={movie} />
-            );
-        }
-
-        return (
-            <RecentMedia type={'movies'} renderItem={renderMovie} />
-        );
-    }
-
 });
 
 module.exports = {

@@ -1,5 +1,9 @@
 var React = require('react');
 
+/**
+ * Renders a paginated list of items, with navigation.
+ */
+
 var Paginator = React.createClass({
 
     propTypes: {
