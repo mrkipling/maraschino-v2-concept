@@ -1,7 +1,10 @@
 var React = require('react');
 
+var RecentMedia = require('../modules/RecentMedia');
+
 var Modules = {
-    RecentEpisodes: require('../modules/RecentEpisodes')
+    RecentEpisodes: RecentMedia.RecentEpisodes,
+    RecentMovies: RecentMedia.RecentMovies
 };
 
 var Column = React.createClass({

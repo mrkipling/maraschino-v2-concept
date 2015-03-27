@@ -10,10 +10,10 @@ var RecentEpisode = React.createClass({
         var episode = this.props.episode;
 
         return (
-            <div className="module-recent-episodes--list--item">
-                <p className="module-recent-episodes--list--show-title">{episode.showtitle}</p>
-                <p className="module-recent-episodes--list--episode-number">Season {episode.season}, Episode {episode.episode}</p>
-                <p className="module-recent-episodes--list--episode-title">{episode.title}</p>
+            <div className="module-recent--list--item">
+                <p className="module-recent--list--title">{episode.showtitle}</p>
+                <p>Season {episode.season}, Episode {episode.episode}</p>
+                <p>{episode.title}</p>
             </div>
         );
     }

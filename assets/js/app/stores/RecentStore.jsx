@@ -4,18 +4,21 @@ var qwest = require('qwest');
 var Tools = require('../Tools');
 var Dispatcher = require('../dispatcher/Dispatcher');
 
-var recentEpisodes = [];
+var recent = {
+    episodes: [],
+    movies: []
+};
 
 /**
- * Private function to fetch recent episodes via XHR. If you want to force an
- * XHR check then use `RecentStore.getRecentEpisodes(true)`.
+ * Private function to fetch recent episodes or movies via XHR. If you want to
+ * force an XHR check then use `RecentStore.getRecentEpisodes(true)`.
  */
 
-function loadRecentEpisodes() {
-    qwest.get('/module/recent/episodes/', null, { responseType: 'json' })
+function loadRecent(type='episodes') {
+    qwest.get(`/module/recent/${type}/`, null, { responseType: 'json' })
          .then(function(response) {
-             recentEpisodes = response;
-             Tools.LocalStorage.setItem('recentEpisodes', recentEpisodes);
+             recent[type] = response;
+             Tools.LocalStorage.setItem(`recent:${type}`, recent[type]);
              RecentStore.emitChange();
          });
 }
@@ -23,24 +26,25 @@ function loadRecentEpisodes() {
 var RecentStore = Tools.Store.create({
 
     /**
-     * Returns recently added episodes.
+     * Returns recently added episodes or movies.
      * @param {boolean} refresh - Force XHR check for new items.
      */
 
-    getRecentEpisodes: function(refresh=false) {
-        // if the recentEpisodes array is empty or we're forcing a refresh
-        if (_.isEmpty(recentEpisodes) || refresh) {
+    getRecent: function(type='episodes', refresh=false) {
+        // if the array is empty or we're forcing a refresh
+        if (_.isEmpty(recent[type]) || refresh) {
+
             // fetch from localStorage so that we can display information
             // immediately on page load
-            if (_.isEmpty(recentEpisodes)) {
-                recentEpisodes = Tools.LocalStorage.getItem('recentEpisodes') || [];
+            if (_.isEmpty(recent[type])) {
+                recent[type] = Tools.LocalStorage.getItem(`recent:${type}`) || [];
             }
 
             // XHR load recent episodes
-            loadRecentEpisodes();
+            loadRecent(type);
         }
 
-        return recentEpisodes;
+        return recent[type];
     }
 
 });

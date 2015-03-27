@@ -9,7 +9,7 @@ MODULES = load_blueprints(app, 'modules')
 CONFIG = {
     'columns': [
         ['RecentEpisodes'],
-        [],
+        ['RecentMovies'],
     ],
 }
 
