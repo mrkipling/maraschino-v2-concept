@@ -1,6 +1,6 @@
 import os, sys, imp
-from lib.xbmcjson import XBMC, PLAYER_VIDEO
-from settings import SETTINGS
+from maraschino.lib.xbmcjson import XBMC, PLAYER_VIDEO
+from maraschino.settings import SETTINGS
 
 def check_frozen():
     # All of the modules are built-in to the interpreter, e.g., by py2exe
@@ -20,7 +20,8 @@ def load_blueprints(app, path):
         https://github.com/MalphasWats/flask-blueprint-loader/
     """
 
-    path = os.path.join(rundir(), path)
+    parent = os.path.join(rundir(), os.pardir)
+    path = os.path.join(parent, path)
     dir_list = os.listdir(path)
     mods = {}
     plugins = []
