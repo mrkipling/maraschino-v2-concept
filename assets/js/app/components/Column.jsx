@@ -1,10 +1,8 @@
 var React = require('react');
 
-var RecentMedia = require('../modules/RecentMedia');
-
 var Modules = {
-    RecentEpisodes: RecentMedia.RecentEpisodes,
-    RecentMovies: RecentMedia.RecentMovies
+    RecentEpisodes: require('../modules/RecentMedia/RecentEpisodes'),
+    RecentMovies: require('../modules/RecentMedia/RecentMovies')
 };
 
 /**
