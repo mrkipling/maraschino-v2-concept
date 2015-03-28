@@ -3,7 +3,7 @@
 .currently-playing {
     background-color: @color-bg-dark;
     bottom: 0;
-    height: 110px;
+    height: 100px;
     left: 0;
     position: fixed;
     right: 0;
@@ -13,7 +13,7 @@
     color: @color-text-recessive;
     font-size: 0.8em;
     line-height: 1.3em;
-    margin: 22px 0 0 20px;
+    margin: 21px 0 0 20px;
 }
 
 .currently-playing--media-info--title {
@@ -47,16 +47,23 @@
     height: 100%;
 }
 
-.progress-bar--current-time,
-.progress-bar--total-time {
+.progress-bar--time {
     color: @color-text-recessive;
     font-size: 0.6em;
-    left: 20px;
+    opacity: 0;
     position: absolute;
     top: -17px;
+    transition: opacity .25s ease-in-out;
+
+    &.current {
+        left: 20px;
+    }
+
+    &.total {
+        right: 20px;
+    }
 }
 
-.progress-bar--total-time {
-    left: auto;
-    right: 20px;
+.currently-playing:hover .progress-bar--time {
+    opacity: 1;
 }

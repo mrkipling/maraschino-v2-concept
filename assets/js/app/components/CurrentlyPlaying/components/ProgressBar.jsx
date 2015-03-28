@@ -16,9 +16,9 @@ var ProgressBar = React.createClass({
 
         return (
             <div className="progress-bar">
-                <p className="progress-bar--current-time">{Tools.Numbers.renderTime(timeInfo.current)}</p>
+                <p className="progress-bar--time current">{Tools.Numbers.renderTime(timeInfo.current)}</p>
                 <div className="progress-bar--bar" style={{ width: `${timeInfo.percentage}%` }}></div>
-                <p className="progress-bar--total-time">{Tools.Numbers.renderTime(timeInfo.total)}</p>
+                <p className="progress-bar--time total">{Tools.Numbers.renderTime(timeInfo.total)}</p>
             </div>
         );
     }
