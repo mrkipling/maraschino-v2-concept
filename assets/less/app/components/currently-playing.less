@@ -3,7 +3,7 @@
 .currently-playing {
     background-color: @color-bg-dark;
     bottom: 0;
-    height: 100px;
+    height: 110px;
     left: 0;
     position: fixed;
     right: 0;
@@ -11,9 +11,9 @@
 
 .currently-playing--media-info {
     color: @color-text-recessive;
-    font-size: 0.9em;
+    font-size: 0.8em;
     line-height: 1.3em;
-    margin: 22px 0 0 10px;
+    margin: 22px 0 0 20px;
 }
 
 .currently-playing--media-info--title {
@@ -45,4 +45,18 @@
 .progress-bar--bar {
     background-color: rgba(255, 255, 255, 0.9);
     height: 100%;
+}
+
+.progress-bar--current-time,
+.progress-bar--total-time {
+    color: @color-text-recessive;
+    font-size: 0.6em;
+    left: 20px;
+    position: absolute;
+    top: -17px;
+}
+
+.progress-bar--total-time {
+    left: auto;
+    right: 20px;
 }

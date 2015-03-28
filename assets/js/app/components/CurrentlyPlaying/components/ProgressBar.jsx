@@ -1,4 +1,5 @@
 var React = require('react');
+var Tools = require('../../../Tools');
 
 /**
  * Displays playback progress of the currently playing media.
@@ -15,7 +16,9 @@ var ProgressBar = React.createClass({
 
         return (
             <div className="progress-bar">
+                <p className="progress-bar--current-time">{Tools.Numbers.renderTime(timeInfo.current)}</p>
                 <div className="progress-bar--bar" style={{ width: `${timeInfo.percentage}%` }}></div>
+                <p className="progress-bar--total-time">{Tools.Numbers.renderTime(timeInfo.total)}</p>
             </div>
         );
     }

@@ -37,7 +37,7 @@ var MediaInfo = React.createClass({
         }
 
         return (
-            <div className="currently-playing--media-info">
+            <div>
                 {mediaInfo}
             </div>
         );

@@ -33,7 +33,7 @@ var CurrentlyPlaying = React.createClass({
         }
 
         var timeInfo = {
-            time: player.time,
+            current: player.time,
             total: player.totaltime,
             percentage: player.percentage
         };
