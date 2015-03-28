@@ -31,9 +31,12 @@ var CurrentlyPlaying = React.createClass({
 
     render: function() {
         var player = this.state.player;
+        var inner;
 
         if (_.isEmpty(player)) {
-            return null;
+            return (
+                <div className="currently-playing inactive" />
+            );
         }
 
         var timeInfo = {

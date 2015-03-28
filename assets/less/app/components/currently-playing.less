@@ -5,8 +5,14 @@
     bottom: 0;
     height: 100px;
     left: 0;
+    opacity: 1;
     position: fixed;
     right: 0;
+    transition: opacity .4s ease-in-out;
+
+    &.inactive {
+        opacity: 0;
+    }
 }
 
 .currently-playing--media-info {
