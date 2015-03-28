@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 
 var AppStore = require('./stores/AppStore');
 var StoreWatchMixin = require('./mixins/StoreWatchMixin');

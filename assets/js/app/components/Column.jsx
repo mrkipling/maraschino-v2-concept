@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 
 var Modules = {
     RecentEpisodes: require('../modules/RecentMedia/RecentEpisodes'),

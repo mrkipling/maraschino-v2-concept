@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 var RecentMedia = require('./components/RecentMedia');
 var RecentMovie = require('./components/RecentMovie');
 

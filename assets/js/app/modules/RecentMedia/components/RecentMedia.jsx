@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 
 var RecentStore = require('../../../stores/RecentStore');
 var StoreWatchMixin = require('../../../mixins/StoreWatchMixin');

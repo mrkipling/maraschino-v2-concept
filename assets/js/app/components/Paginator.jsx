@@ -1,4 +1,4 @@
-var React = require('react');
+var React = require('react/addons');
 
 /**
  * Renders a paginated list of items, with navigation.
