@@ -25,6 +25,10 @@ var CurrentlyPlaying = React.createClass({
         }
     },
 
+    componentDidMount: function() {
+        setInterval(PlayerStore.getPlayerInfo.bind(this, true), 5000);
+    },
+
     render: function() {
         var player = this.state.player;
 
