@@ -4,11 +4,12 @@ This is just-for-fun rewrite of the very basics of Maraschino. I wanted to play 
 
 This is not a replacement for Maraschino and it never will be - like I said, I'm just playing around!
 
-<img src="http://www.maraschinoproject.com/static/images/screenshot-v2-concept.jpg" width="400">
-
 ## What is Maraschino?
 
 Maraschino is an open-source web frontend for HTPCs running Kodi. You can find more details on the [project's GitHub repo](https://github.com/mrkipling/maraschino).
+
+## Screenshots
+<img src="http://www.maraschinoproject.com/static/images/concept_screen1.jpg" width="400">&nbsp;&nbsp;<img src="http://www.maraschinoproject.com/static/images/concept_screen2.jpg" width="400">
 
 ## What technologies are being used?
 
