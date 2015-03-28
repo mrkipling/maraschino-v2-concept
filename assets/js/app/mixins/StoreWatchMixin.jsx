@@ -10,7 +10,16 @@ var StoreWatchMixin = function(store) {
             this.setState(this.getStateFromStore());
         },
 
+        /**
+         * If `getInitialStateFromStore` is defined then use this method when
+         * getting the initial state, otherwise just use `getStateFromStore`.
+         */
+
         getInitialState: function() {
+            if (this.getInitialStateFromStore) {
+                return this.getInitialStateFromStore();
+            }
+
             return this.getStateFromStore();
         },
 

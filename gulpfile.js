@@ -23,6 +23,7 @@ var paths = {
     styles: {
         lib: [],
         app: ['./assets/less/app/reset.less',
+              './assets/less/app/vars/colors.less',
               './assets/less/app/base.less',
               './assets/less/app/components/**/*.less',
               './assets/less/app/modules/**/*.less']

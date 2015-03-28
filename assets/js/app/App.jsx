@@ -1,8 +1,10 @@
 var React = require('react');
 
 var AppStore = require('./stores/AppStore');
-var Column = require('./components/Column');
 var StoreWatchMixin = require('./mixins/StoreWatchMixin');
+
+var Column = require('./components/Column');
+var CurrentlyPlaying = require('./components/CurrentlyPlaying/CurrentlyPlaying');
 
 var App = React.createClass({
 
@@ -22,8 +24,11 @@ var App = React.createClass({
         });
 
         return (
-            <div className={'columns-' + columns.length}>
-                {eleColumns}
+            <div className="container">
+                <div className={'columns-' + columns.length}>
+                    {eleColumns}
+                </div>
+                <CurrentlyPlaying />
             </div>
         );
     }
