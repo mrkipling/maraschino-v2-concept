@@ -3,25 +3,12 @@ var qwest = require('qwest');
 
 var Tools = require('../Tools');
 var Dispatcher = require('../dispatcher/Dispatcher');
+var RecentActionCreators = require('../actions/RecentActionCreators');
 
 var recent = {
     episodes: [],
     movies: []
 };
-
-/**
- * Private function to fetch recent episodes or movies via XHR. If you want to
- * force an XHR check then use `RecentStore.getRecentEpisodes(true)`.
- */
-
-function loadRecent(type='episodes') {
-    qwest.get(`/module/recent/${type}/`, null, { responseType: 'json' })
-         .then(function(response) {
-             recent[type] = response;
-             Tools.LocalStorage.setItem(`recent:${type}`, recent[type]);
-             RecentStore.emitChange();
-         });
-}
 
 var RecentStore = Tools.Store.create({
 
@@ -40,13 +27,38 @@ var RecentStore = Tools.Store.create({
                 recent[type] = Tools.LocalStorage.getItem(`recent:${type}`) || [];
             }
 
-            // XHR load recent episodes
-            loadRecent(type);
+            // XHR load recent media
+            switch (type) {
+                case 'episodes':
+                    RecentActionCreators.fetchRecentEpisodes();
+                    break;
+
+                case 'movies':
+                    RecentActionCreators.fetchRecentMovies();
+                    break;
+            }
         }
 
         return recent[type];
     }
 
+});
+
+Dispatcher.register(function(action) {
+    var type;
+
+    switch(action.actionType) {
+        case "FETCH_RECENT_EPISODES":
+        case "FETCH_RECENT_MOVIES":
+            type = (action.actionType === 'FETCH_RECENT_EPISODES') ? 'episodes' : 'movies';
+            qwest.get(`/module/recent/${type}/`, null, { responseType: 'json' })
+                 .then(function(response) {
+                     recent[type] = response;
+                     Tools.LocalStorage.setItem(`recent:${type}`, recent[type]);
+                     RecentStore.emitChange();
+                 });
+            break;
+    }
 });
 
 module.exports = RecentStore;
