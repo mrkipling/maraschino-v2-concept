@@ -19,6 +19,7 @@ var MediaInfo = React.createClass({
                 mediaInfo = (
                     <div className="currently-playing--media-info">
                         <h2 className="currently-playing--media-info--title">{media.title}</h2>
+                        <div className={`currently-playing--media-info--rating media-rating rating-${media.rating}`}></div>
                         <p>{media.year}</p>
                     </div>
                 );
