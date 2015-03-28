@@ -1,8 +1,6 @@
 var React = require('react/addons');
-
 var AppStore = require('./stores/AppStore');
 var StoreWatchMixin = require('./mixins/StoreWatchMixin');
-
 var Column = require('./components/Column');
 var CurrentlyPlaying = require('./components/CurrentlyPlaying/CurrentlyPlaying');
 
@@ -16,19 +14,18 @@ var App = React.createClass({
 
     componentDidUpdate: function() {
         // if there is no background, reset it to the default
-
         if (!this.state.background) {
             document.body.style.backgroundImage = '';
             return;
         }
 
-        // otherwise set the background image
-
+        // otherwise get the fanart URL into a usable state...
         var url = this.state.background.replace('image://', '');
         if (url.slice(-1) === '/') {
             url = url.slice(0, -1);
         }
 
+        // ..and set it as the body background
         url = `${this.state.serverUrl}image/${url}`;
         document.body.style.backgroundImage = `url(${url})`;
     },
