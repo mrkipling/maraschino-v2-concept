@@ -9,7 +9,7 @@ This is not a replacement for Maraschino and it never will be - like I said, I'm
 Maraschino is an open-source web frontend for HTPCs running Kodi. You can find more details on the [project's GitHub repo](https://github.com/mrkipling/maraschino).
 
 ## Screenshots
-<img src="http://www.maraschinoproject.com/static/images/concept_screen1.jpg" width="400">&nbsp;&nbsp;<img src="http://www.maraschinoproject.com/static/images/concept_screen2.jpg" width="400">
+<img src="http://www.maraschinoproject.com/static/images/concept_screen1.jpg" width="3550">&nbsp;&nbsp;<img src="http://www.maraschinoproject.com/static/images/concept_screen2.jpg" width="355">
 
 ## What technologies are being used?
 
