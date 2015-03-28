@@ -1,7 +1,7 @@
 var React = require('react');
 
 /**
- * Media info.
+ * Displays information about the currently playing media.
  */
 
 var MediaInfo = React.createClass({

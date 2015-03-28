@@ -20,8 +20,9 @@ def currently_playing():
         if active_player[0]['type'] == 'video':
             currently_playing = xbmc.Player.GetItem(playerid = 1, properties = ['title', 'season', 'episode', 'duration', 'showtitle', 'fanart', 'tvshowid', 'plot', 'thumbnail', 'year', 'rating'])['result']['item']
 
-            # round to nearest whole number
+            # do some rounding
             currently_playing['rating'] = round(currently_playing['rating'])
+            currently_playing['percentage'] = round(player_info['percentage'], 2)
 
         player_info['media'] = currently_playing
         player_info['volume'] = volume
