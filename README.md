@@ -4,11 +4,11 @@ This is just-for-fun rewrite of the very basics of Maraschino. I wanted to play 
 
 This is not a replacement for Maraschino and it never will be - like I said, I'm just playing around!
 
-# What is Maraschino?
+## What is Maraschino?
 
 Maraschino is an open-source web frontend for HTPCs running Kodi. You can find more details on the [project's GitHub repo](https://github.com/mrkipling/maraschino).
 
-# What technologies are being used?
+## What technologies are being used?
 
 * React with JSX
 * Flux (without a framework as I wanted to learn the key concepts)
@@ -18,7 +18,7 @@ Maraschino is an open-source web frontend for HTPCs running Kodi. You can find m
 * ECMAScript 6, transpiled to ECMAScript 5 using es6ify
 * Flask (I wanted something simple so that I could focus on the front-end technologies)
 
-# What features does it have?
+## What features does it have?
 
 Not as many as Maraschino, that's for sure! I just wanted to get a feel for the Flux architecture.
 
