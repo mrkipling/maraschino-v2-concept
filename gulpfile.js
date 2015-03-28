@@ -21,7 +21,6 @@ var gulp = require('gulp'),
 
 var paths = {
     styles: {
-        lib: [],
         app: './assets/less/app/app.less'
     },
     scripts: {
@@ -35,14 +34,6 @@ var paths = {
 
 
 /*--- styles ---*/
-
-gulp.task('styles:lib', function() {
-    return gulp.src(paths.styles.lib)
-        .pipe(less())
-        .pipe(concat('lib.css'))
-        .pipe(gulp.dest('./static/css'))
-        .pipe(gulpif(watching, livereload()));
-});
 
 gulp.task('styles:app', function() {
     return gulp.src(paths.styles.app)
@@ -159,7 +150,6 @@ function handleError(err) {
 
 gulp.task('watch', ['scripts:app:watch'], function() {
     watching = true;
-    gulp.watch('./assets/less/lib/**', ['styles:lib']);
     gulp.watch('./assets/less/app/**', ['styles:app']);
     gulp.watch('./assets/images/**', ['images']);
 
@@ -174,8 +164,7 @@ gulp.task('watch', ['scripts:app:watch'], function() {
 /*--- default task ---*/
 
 gulp.task('default', ['clean'], function() {
-    gulp.start('styles:lib',
-               'styles:app',
+    gulp.start('styles:app',
                'scripts:app',
                'images');
 });
