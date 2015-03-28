@@ -3,20 +3,9 @@ var qwest = require('qwest');
 
 var Tools = require('../Tools');
 var Dispatcher = require('../dispatcher/Dispatcher');
+var PlayerActionCreators = require('../actions/PlayerActionCreators');
 
 var playerInfo = {};
-
-/**
- * Private function to load information about what is currently playing via XHR.
- */
-
-function loadInfo() {
-    qwest.get('/currently-playing/', null, { responseType: 'json' })
-         .then(function(response) {
-             playerInfo = response;
-             PlayerStore.emitChange();
-         });
-}
 
 var PlayerStore = Tools.Store.create({
 
@@ -27,12 +16,24 @@ var PlayerStore = Tools.Store.create({
 
     getPlayerInfo: function(refresh=false) {
         if (refresh) {
-            loadInfo();
+            PlayerActionCreators.fetchPlayerInfo();
         }
 
         return playerInfo;
     }
 
+});
+
+Dispatcher.register(function(action) {
+    switch(action.actionType) {
+        case "FETCH_PLAYER_INFO":
+            qwest.get('/currently-playing/', null, { responseType: 'json' })
+                 .then(function(response) {
+                     playerInfo = response;
+                     PlayerStore.emitChange();
+                 });
+            break;
+    }
 });
 
 module.exports = PlayerStore;
