@@ -12,6 +12,7 @@ CONFIG = {
         ['RecentEpisodes'],
         ['RecentMovies'],
     ],
+    'serverUrl': '%s://%s:%s/' % (SETTINGS['protocol'], SETTINGS['server'], SETTINGS['port'])
 }
 
 

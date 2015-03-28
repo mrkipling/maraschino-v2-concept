@@ -14,6 +14,25 @@ var App = React.createClass({
         return AppStore.getSettings();
     },
 
+    componentDidUpdate: function() {
+        // if there is no background, reset it to the default
+
+        if (!this.state.background) {
+            document.body.style.backgroundImage = '';
+            return;
+        }
+
+        // otherwise set the background image
+
+        var url = this.state.background.replace('image://', '');
+        if (url.slice(-1) === '/') {
+            url = url.slice(0, -1);
+        }
+
+        url = `${this.state.serverUrl}image/${url}`;
+        document.body.style.backgroundImage = `url(${url})`;
+    },
+
     render: function() {
         var columns = this.state.columns;
 

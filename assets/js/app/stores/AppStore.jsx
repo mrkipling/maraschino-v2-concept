@@ -31,11 +31,13 @@ function getMetaSetting(setting, type) {
 };
 
 /**
- * Read the initial settings from the DOM.
+ * Populate the initial settings.
  */
 
 function initialiseSettings() {
     settings.columns = getMetaSetting('columns', 'json');
+    settings.serverUrl = getMetaSetting('serverUrl');
+    settings.background = false;
 }
 
 /**
@@ -59,7 +61,7 @@ Dispatcher.register(function(action) {
         case "UPDATE_SETTING":
             var key = Object.keys(action.setting)[0];
             var setting = settings[key];
-            if (setting) {
+            if (typeof setting !== 'undefined') {
                 settings[key] = action.setting[key];
                 AppStore.emitChange();
             }

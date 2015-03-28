@@ -3,6 +3,7 @@ var _ = require('underscore');
 
 var PlayerStore = require('../../stores/PlayerStore');
 var StoreWatchMixin = require('../../mixins/StoreWatchMixin');
+var AppActionCreators = require('../../actions/AppActionCreators');
 
 var MediaInfo = require('./components/MediaInfo');
 var ProgressBar = require('./components/ProgressBar');
@@ -20,8 +21,20 @@ var CurrentlyPlaying = React.createClass({
     },
 
     getStateFromStore: function(refresh=false) {
+        var player = PlayerStore.getPlayerInfo(refresh);
+        var background = false;
+
+        // if there is currently playing media with fanart, update the background
+        if (player.media && typeof player.media.fanart !== 'undefined') {
+            background = player.media.fanart;
+        }
+
+        AppActionCreators.updateSetting({
+            background: background
+        });
+
         return {
-            player: PlayerStore.getPlayerInfo(refresh)
+            player: player
         }
     },
 
