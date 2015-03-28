@@ -30,7 +30,7 @@ var RecentMedia = React.createClass({
 
         return (
             <div className="module module-recent">
-                <p className="module--title">Recent {type.charAt(0).toUpperCase() + type.slice(1)}</p>
+                <h2 className="module--title">Recent {type.charAt(0).toUpperCase() + type.slice(1)}</h2>
                 <div className="module-recent--list">
                     <Paginator items={this.state.media} renderItem={renderItem} />
                 </div>
