@@ -1,6 +1,6 @@
-import json
 from maraschino.tools import xbmc_api
 from flask import Blueprint
+import json
 
 module = Blueprint('recent', __name__)
 
