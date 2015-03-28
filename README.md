@@ -27,3 +27,5 @@ Not as many as Maraschino, that's for sure! I just wanted to get a feel for the 
 * Currently playing
 
 I might add some more over time (or not).
+
+<img src="http://www.maraschinoproject.com/static/images/maraschino_logo.png" width="71" height="79">
