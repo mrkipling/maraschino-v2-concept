@@ -123,7 +123,10 @@ gulp.task('images', function() {
 /*--- clean ---*/
 
 gulp.task('clean', function() {
-    return gulp.src(['./static/css', './static/js'], {read: false})
+    return gulp.src(['./static/css',
+                     './static/js',
+                     './static/images'],
+                    { read: false })
         .pipe(rimraf());
 });
 
