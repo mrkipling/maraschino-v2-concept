@@ -29,7 +29,7 @@ Not as many as Maraschino, that's for sure! I just wanted to get a feel for the 
 * Recent movies
 * Currently playing
 
-I might add some more over time (or not).
+It also does some cool stuff like save recent episodes/movies in localStorage so that it always has something to display immediately on page load.
 
 ## How do I get started?
 
