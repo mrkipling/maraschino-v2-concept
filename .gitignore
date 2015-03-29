@@ -1,7 +1,4 @@
 *.pyc
-node_modules/
-
 /maraschino/settings.py
-
+/node_modules/
 /static/
-/maraschino/modules/*/static/c/
