@@ -31,4 +31,17 @@ Not as many as Maraschino, that's for sure! I just wanted to get a feel for the 
 
 I might add some more over time (or not).
 
+## How do I get started?
+
+I purposefully haven't checked npm dependencies or compiled assets into source control. In order to run this project you will have to:
+
+* run `npm install` to install dependencies
+* run `gulp` to build the assets
+* copy or rename `maraschino/settings.example.py` to `maraschino/settings.py` and fill in your Kodi server details
+* run the dev server, `python maraschino.py`
+
+## What if I just want to look at the code?
+
+[App.jsx](https://github.com/mrkipling/maraschino-v2/blob/master/assets/js/app/App.jsx) would be a good place to start.
+
 <img src="http://www.maraschinoproject.com/static/images/maraschino_logo.png" width="71" height="79">
